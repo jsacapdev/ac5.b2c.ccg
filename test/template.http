@@ -2,7 +2,7 @@
 POST https://login.microsoftonline.com/<your b2c domain>.onmicrosoft.com/oauth2/v2.0/token HTTP/1.1
 content-type: application/x-www-form-urlencoded
 
-client_id=<your server application id>&scope=https://<your b2c domain>.onmicrosoft.com/<your server application id>/.default&client_secret=<your server secret>&grant_type=client_credentials
+client_id=<your client application id>&scope=https://<your b2c domain>.onmicrosoft.com/<your server application id>/.default&client_secret=<your client secret>&grant_type=client_credentials
 
 ###
 GET https://localhost:5001/api/WeatherForecast HTTP/1.1

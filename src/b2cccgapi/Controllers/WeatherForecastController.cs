@@ -4,6 +4,7 @@ using System.Linq;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Microsoft.Identity.Web.Resource;
 
 namespace b2cccgapi.Controllers
 {
@@ -27,6 +28,8 @@ namespace b2cccgapi.Controllers
         [HttpGet]
         public IEnumerable<WeatherForecast> Get()
         {
+            HttpContext.ValidateAppRole("Read");
+
             var rng = new Random();
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {

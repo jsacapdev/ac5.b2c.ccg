@@ -6,7 +6,29 @@ Asp.net Core 5 using MSAL.NET and Client Credentials Grant in a B2C scenario, as
 
 ## Azure AD Configuration
 
-There is no client. The server has the secret and that is what is used to get the token. Also, no manifests, which also probably means no role/requirement/policy mapping.
+The approach supports the same type of client/server manifest mapping. So it will also probably support the policy/requirement based mapping.
+
+The following has been added to the manifest in addition to creating the application registration.
+
+``` json
+"appRoles": [
+    {
+        "allowedMemberTypes": [
+            "User",
+            "Application"
+        ],
+        "description": "Read messages",
+        "displayName": "Read",
+        "id": "6f2c2b38-4c2a-484d-bed8-5861194474e0",
+        "isEnabled": true,
+        "lang": null,
+        "origin": "Application",
+        "value": "Read"
+    }
+]
+```
+
+It also looks like it can handle the ability to validate the role using `HttpContext.ValidateAppRole("Read");`;
 
 ## Configuration
 
